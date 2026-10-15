@@ -78,6 +78,8 @@ textarea{min-height:130px;resize:vertical}
 .ev{display:grid;grid-template-columns:92px 1fr;gap:22px;padding:26px 0;border-top:1px solid var(--line)}.ev.main{background:var(--card);border:1px solid var(--acc);border-radius:14px;padding:26px;margin:10px 0}
 .dt{text-align:center;border:1px solid var(--line);border-radius:12px;padding:10px 4px;background:var(--card);align-self:start}.ev.main .dt{background:var(--bg)}.dt small{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc)}.dt b{display:block;font:400 44px/1 "Instrument Serif",serif}.dt span{font-size:12px;color:var(--mute)}
 .ev h3{font-size:30px;margin:4px 0 8px}.ev p{margin:2px 0}.ev .tm{font-weight:600}.ev a.mp{display:inline-block;margin-top:10px;font-size:14px;color:var(--acc)}
+nav a.lv::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#d93025;margin-right:7px;animation:pl 1.6s infinite}@keyframes pl{50%{opacity:.3}}
+.cd{font:400 clamp(40px,9vw,76px)/1.05 "Instrument Serif",serif;margin:6px 0 4px}.lrow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-top:1px solid var(--line)}.lrow b{font-size:20px;letter-spacing:.04em}.cp{background:none;border:1px solid var(--line);border-radius:99px;color:var(--ink);padding:6px 14px;cursor:pointer;font:inherit;font-size:13px}
 .kin{margin-top:40px;padding:22px 24px;border:1px solid var(--line);border-radius:14px;background:var(--card)}.kin p{margin:0 0 8px}
 @media(max-width:760px){.ev{grid-template-columns:72px 1fr;gap:14px}.ev.main{padding:18px}.ev h3{font-size:25px}.dt b{font-size:34px}}.note{padding:14px 16px;border:1px dashed var(--line);border-radius:10px;color:var(--mute);font-size:14px;margin-bottom:18px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:50;place-items:center;padding:20px}#lb.on{display:grid}#lb img{max-width:100%;max-height:92vh;border-radius:8px}
@@ -91,7 +93,7 @@ footer h3{font-size:30px;max-width:340px}footer ul{list-style:none;margin:0;padd
 <header><div class="wrap bar">
 <a class="logo" href="#/">&#10013; A. S. M. Akankali</a>
 <button id="burger" aria-label="Menu">&#9776;</button>
-<nav id="nav"><a href="#/life">His Life</a><a href="#/arrangements">Funeral Arrangements</a><a href="#/service">Service</a><a href="#/readings">Readings &amp; Hymns</a><a href="#/gallery">Gallery</a><a class="pill" href="#/tributes">Leave a Tribute</a></nav>
+<nav id="nav"><a href="#/life">His Life</a><a href="#/arrangements">Funeral Arrangements</a><a class="lv" href="#/live">Live Stream</a><a href="#/service">Service</a><a href="#/readings">Readings &amp; Hymns</a><a href="#/gallery">Gallery</a><a class="pill" href="#/tributes">Leave a Tribute</a></nav>
 </div></header>
 
 <main>
@@ -122,6 +124,23 @@ footer h3{font-size:30px;max-width:340px}footer ul{list-style:none;margin:0;padd
    <li><i>4</i><div><b>Father</b><span>His example inspired his daughter to study pharmacy.</span></div></li>
    <li><i>5</i><div><b>2026</b><span>Called home. He is deeply missed.</span></div></li>
   </ul></div>
+</div></section></div>
+
+<div class="page" data-p="live"><section class="s"><div class="wrap" style="max-width:820px">
+ <div class="eyebrow">Stream event live</div><h2>Watch the service live</h2>
+ <p class="lead">Service of Songs for Pharm. Matthew Anyibimbu Sunday Akankali, on Zoom.</p>
+ <div class="card" style="margin-top:28px;text-align:center;padding:34px 22px">
+  <div class="ref" id="lst">Starts in</div>
+  <div class="cd" id="cd">&nbsp;</div>
+  <p style="margin:10px 0 0"><b>Friday, 16 October 2026 &middot; 4:00 PM</b> (Lagos time)</p>
+  <p class="msg" id="lt" style="min-height:0"></p>
+  <div style="margin-top:22px"><a class="btn d" target="_blank" rel="noopener" href="https://us04web.zoom.us/j/79531698419?pwd=nQPBlAa5pVZaLbqwKg8gIsmFnCO7dn.1">Join on Zoom</a> <a class="btn o" style="margin-left:6px" target="_blank" rel="noopener" href="https://us04web.zoom.us/wc/join/79531698419?pwd=nQPBlAa5pVZaLbqwKg8gIsmFnCO7dn.1">Join in your browser</a> <a class="btn o" style="margin-left:6px" target="_blank" rel="noopener" href="https://us04web.zoom.us/launch/jc/79531698419">Open meeting chat</a></div>
+ </div>
+ <div style="margin-top:26px">
+  <div class="lrow"><span>Meeting ID</span><b>795 3169 8419</b><button class="cp" data-copy="79531698419">Copy</button></div>
+  <div class="lrow" style="border-bottom:1px solid var(--line)"><span>Passcode</span><b>1aGNU4</b><button class="cp" data-copy="1aGNU4">Copy</button></div>
+ </div>
+ <p class="msg" style="margin-top:18px">Open the link a few minutes early. If Zoom asks for a passcode, enter the one above. The same link is used for the whole service.</p>
 </div></section></div>
 
 <div class="page" data-p="arrangements"><section class="s"><div class="wrap" style="max-width:820px">
@@ -229,7 +248,7 @@ footer h3{font-size:30px;max-width:340px}footer ul{list-style:none;margin:0;padd
 <div id="lb"><img alt=""></div>
 <footer><div class="wrap">
  <h3>Forever in our hearts.</h3>
- <ul><li><a href="#/life">His Life</a></li><li><a href="#/arrangements">Funeral Arrangements</a></li><li><a href="#/service">Service</a></li><li><a href="#/readings">Readings &amp; Hymns</a></li><li><a href="#/gallery">Gallery</a></li><li><a href="#/tributes">Tributes</a></li></ul>
+ <ul><li><a href="#/life">His Life</a></li><li><a href="#/arrangements">Funeral Arrangements</a></li><li><a href="#/live">Live Stream</a></li><li><a href="#/service">Service</a></li><li><a href="#/readings">Readings &amp; Hymns</a></li><li><a href="#/gallery">Gallery</a></li><li><a href="#/tributes">Tributes</a></li></ul>
  <div class="copy">&copy; 2026 The Akankali family &middot; Pharm. Anyibimbu Sunday Matthew Akankali, 1956&ndash;2026</div>
 </div></footer>
 
@@ -248,6 +267,14 @@ $('#lb').onclick=()=>$('#lb').classList.remove('on');
 
 document.querySelector('.hp img').src=document.querySelector('#portrait img').src;
 document.querySelectorAll('#st .tx').forEach(x=>{if(x.textContent.length>650){x.classList.add('clamp');const b=document.createElement('button');b.className='more';b.textContent='Read more';b.onclick=()=>{const o=x.classList.toggle('open');b.textContent=o?'Show less':'Read more'};x.after(b)}});
+const T0=Date.UTC(2026,9,16,15,0,0),T1=T0+2*3600e3;
+function tick(){const n=Date.now(),st=$('#lst'),cd=$('#cd');if(!st)return;
+ if(n<T0){const s=Math.floor((T0-n)/1000),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);st.textContent='Starts in';cd.textContent=(d?d+'d ':'')+h+'h '+m+'m '+(s%60)+'s'}
+ else if(n<T1){st.textContent='Live now';cd.textContent='Join the service'}
+ else{st.textContent='This service has ended';cd.textContent='Thank you for joining us'}}
+tick();setInterval(tick,1000);
+try{$('#lt').textContent='In your time zone: '+new Date(T0).toLocaleString([],{dateStyle:'full',timeStyle:'short'})}catch(e){}
+document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);b.textContent='Copied'}catch(e){b.textContent='Select above'}setTimeout(()=>b.textContent='Copy',1800)});
 let db=null,assets=null,user=null;
 const esc=(el,t)=>{el.textContent=t;return el};
 function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
