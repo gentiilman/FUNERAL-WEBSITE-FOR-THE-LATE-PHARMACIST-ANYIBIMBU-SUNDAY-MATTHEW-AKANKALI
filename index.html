@@ -200,7 +200,7 @@ footer h3{font-size:30px;max-width:340px}footer ul{list-style:none;margin:0;padd
 <div class="page" data-p="tributes"><section class="s"><div class="wrap grid">
  <div class="stk"><div class="eyebrow">Tributes</div><h2>Share a memory</h2><p class="lead">Write a few words for his family. Every tribute is shown below.</p>
   <div class="note" id="tnote" hidden></div>
-  <form id="tf"><input id="tn" placeholder="Your name" maxlength="80" required><input id="tr" placeholder="Your relationship to him (optional)" maxlength="80"><textarea id="tt" placeholder="Your tribute or memory" maxlength="5000" required></textarea><label class="msg">Attach a photo (optional) <input id="tp" type="file" accept="image/*"></label><button class="btn d" type="submit">Post tribute</button><div class="msg" id="tm"></div></form></div>
+  <form id="tf"><input id="tn" placeholder="Your name" maxlength="80" required><input id="tr" placeholder="Your relationship to him (optional)" maxlength="80"><textarea id="tt" placeholder="Your tribute or memory" maxlength="5000" required></textarea><label class="msg">Upload a written tribute (PDF or text file) or a photo, optional <input id="tp" type="file" accept="image/*,.pdf,.txt,application/pdf,text/plain"></label><button class="btn d" type="submit">Post tribute</button><div class="msg" id="tm"></div></form></div>
  <div><div class="ref">Tributes from family and friends &middot; 21</div><div id="st">
 <article class="tr"><b>Aisha Olawuyi</b><div class="tx"><p>I was devastated upon receiving the call of ur passing on my Birthday, it's hard to put in words how remarkable of a person You were, You were my Confidant and Father Figure in the neighborhood, anytime I fall ill and call you immediately you are prescribing one or two drugs for me and my health becomes perfect because of ur professionalism in the Pharmaceutical line.</p><p>Dear Daddy, your timely Advice in difficult situations were top-notch, your wisdom on how to navigate life's journey is incomparable, Thank You Daddy for your reservoir of knowledge you never failed to pour out anytime the need arises and Why we were not ready for the Call home, You were fully prepared for the Call Home, we can't question God as it pleases him to call you Home on my Birthday .</p><p>Rest in Peace The Great Pharmacist</p><p>Aisha Olawuyi</p></div><small>Tuesday, Oct 13</small></article>
 <article class="tr"><b>Cyril Mmakwe</b><div class="tx"><p>It was with a heavy heart that I heard the news of the passing of Pharm Akamkali.</p><p>You were a gentleman to the core, highly intelligent, a reservoir of knowledge and highly dependable colleague and friend. The last time we met at PCN Continued Education in Yaba, you still exhibited those sterling qualities. Your smile was infectious. Your advice in difficult situations were always encouraging.</p><p>I join your entire friends and family to say, Rest in peace.</p><p>Cyril Mmakwe.</p></div><small>Tuesday, Oct 13</small></article>
@@ -286,7 +286,7 @@ function showTributes(snap){const box=$('#tl');box.replaceChildren();
  snap.docs.forEach(d=>{const t=d.data(),r=el('div','tr');
   r.append(el('b',null,t.name||'Friend'));
   r.append(el('p',null,t.text||''));
-  if(t.img){const im=el('img');im.src='/_blob/'+t.img;im.alt='Photo shared with tribute';im.style.cssText='max-width:100%;border-radius:10px;margin:8px 0;display:block';r.append(im)}
+  if(t.img&&/^(application\/pdf|text\/plain)/.test(t.ft||'')){const a=el('a',null,'View attached tribute ('+(t.ft==='application/pdf'?'PDF':'text')+')');a.href='/_blob/'+t.img;a.target='_blank';a.rel='noopener';a.style.cssText='display:inline-block;margin:6px 0;color:var(--acc)';r.append(a)}else if(t.img){const im=el('img');im.src='/_blob/'+t.img;im.alt='Photo shared with tribute';im.style.cssText='max-width:100%;border-radius:10px;margin:8px 0;display:block';r.append(im)}
   r.append(el('small',null,[t.relation,when(t.ts)].filter(Boolean).join(' · ')));
   if(user&&user.canEdit&&user.canEdit()){const b=el('button',null,' · remove');b.onclick=()=>{if(confirm('Remove this tribute?'))db.doc('tributes/'+d.id).delete()};r.append(b)}
   box.append(r)})}
@@ -302,8 +302,8 @@ const gl=$('#gl');
 async function init(){
  try{db=await claude.use('db');assets=await claude.use('assets');user=await claude.use('user')}catch(e){}
  if(!db){$('#tl').replaceChildren();
-  const n=$('#tnote');n.hidden=false;n.textContent='Posting tributes needs a signed-in claude.ai view of this page. If you cannot post, please send your tribute to the family directly.';
-  $('#tf').querySelectorAll('input,textarea,button').forEach(x=>x.disabled=true);
+  const n=$('#tnote');n.hidden=false;n.textContent='You can write your tribute below. Saving it on this page needs a signed-in claude.ai view, so if that is not available you will be offered a way to send it to the family instead.';
+  
   const g=$('#gnote');g.hidden=false;g.textContent='Photo uploads need a signed-in claude.ai view of this page.';$('#gp').disabled=true;return}
  db.collection('tributes').orderBy('ts','desc').limit(200).onSnapshot(showTributes,()=>{});
  db.collection('photos').orderBy('ts','desc').limit(200).onSnapshot(showPhotos,()=>{});
@@ -311,8 +311,8 @@ async function init(){
  // show family portrait if one was marked
  try{const s=await db.doc('site/portrait').get();if(s.exists){const i=el('img');i.src='/_blob/'+s.data().id;i.alt='Portrait';$('#portrait').replaceChildren(i)}}catch(e){}
 }
-$('#tf').onsubmit=async e=>{e.preventDefault();const m=$('#tm');m.textContent='Posting…';
- try{const d={name:$('#tn').value.trim(),relation:$('#tr').value.trim(),text:$('#tt').value.trim(),ts:Date.now()};const pf=$('#tp').files[0];if(pf){if(!assets||!pf.type.startsWith('image/')){m.textContent='That photo could not be attached.';return}d.img=(await assets.upload(pf)).id}await db.collection('tributes').add(d);
+$('#tf').onsubmit=async e=>{e.preventDefault();const m=$('#tm');if(!db){const txt='Tribute for Pharm. Anyibimbu Sunday Matthew Akankali\n\n'+$('#tt').value.trim()+'\n\n— '+$('#tn').value.trim()+($('#tr').value.trim()?' ('+$('#tr').value.trim()+')':'');m.textContent='';const w=document.createElement('a');w.className='btn d';w.target='_blank';w.rel='noopener';w.href='https://wa.me/?text='+encodeURIComponent(txt);w.textContent='Send via WhatsApp';const c=document.createElement('button');c.type='button';c.className='cp';c.textContent='Copy tribute';c.onclick=async()=>{try{await navigator.clipboard.writeText(txt);c.textContent='Copied'}catch(x){c.textContent='Select and copy manually'}};m.append('This page cannot save tributes right now. Send yours to the family instead: ',w,' ',c);return}m.textContent='Posting…';
+ try{const d={name:$('#tn').value.trim(),relation:$('#tr').value.trim(),text:$('#tt').value.trim(),ts:Date.now()};const pf=$('#tp').files[0];if(pf){if(!assets||!/^(image\/|application\/pdf|text\/plain)/.test(pf.type)){m.textContent='That file could not be attached. Use a photo, PDF or text file.';return}d.img=(await assets.upload(pf)).id;d.ft=pf.type}await db.collection('tributes').add(d);
   $('#tf').reset();m.textContent='Thank you. Your tribute has been shared.'}
  catch(err){m.textContent='Could not post your tribute ('+(err&&err.code||'error')+'). Please try again.'}};
 $('#gp').onchange=async e=>{const m=$('#gm');const files=[...e.target.files];let n=0;
