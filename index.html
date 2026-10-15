@@ -74,7 +74,12 @@ textarea{min-height:130px;resize:vertical}
 .tx{white-space:normal}.tx p{margin:0 0 10px}.tx.clamp{max-height:11em;overflow:hidden;-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}.tx.clamp.open{max-height:none;-webkit-mask-image:none;mask-image:none}
 .more{background:none;border:0;color:var(--acc);cursor:pointer;font:inherit;font-size:14px;padding:0 0 6px}.tr b{font-weight:600}
 @media(min-width:761px){.stk{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px)}}
-.msg{font-size:14px;color:var(--mute);min-height:20px}.note{padding:14px 16px;border:1px dashed var(--line);border-radius:10px;color:var(--mute);font-size:14px;margin-bottom:18px}
+.msg{font-size:14px;color:var(--mute);min-height:20px}
+.ev{display:grid;grid-template-columns:92px 1fr;gap:22px;padding:26px 0;border-top:1px solid var(--line)}.ev.main{background:var(--card);border:1px solid var(--acc);border-radius:14px;padding:26px;margin:10px 0}
+.dt{text-align:center;border:1px solid var(--line);border-radius:12px;padding:10px 4px;background:var(--card);align-self:start}.ev.main .dt{background:var(--bg)}.dt small{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc)}.dt b{display:block;font:400 44px/1 "Instrument Serif",serif}.dt span{font-size:12px;color:var(--mute)}
+.ev h3{font-size:30px;margin:4px 0 8px}.ev p{margin:2px 0}.ev .tm{font-weight:600}.ev a.mp{display:inline-block;margin-top:10px;font-size:14px;color:var(--acc)}
+.kin{margin-top:40px;padding:22px 24px;border:1px solid var(--line);border-radius:14px;background:var(--card)}.kin p{margin:0 0 8px}
+@media(max-width:760px){.ev{grid-template-columns:72px 1fr;gap:14px}.ev.main{padding:18px}.ev h3{font-size:25px}.dt b{font-size:34px}}.note{padding:14px 16px;border:1px dashed var(--line);border-radius:10px;color:var(--mute);font-size:14px;margin-bottom:18px}
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:50;place-items:center;padding:20px}#lb.on{display:grid}#lb img{max-width:100%;max-height:92vh;border-radius:8px}
 footer{background:var(--dark);color:var(--darkink);padding:56px 0 40px;margin-top:0}
 footer .wrap{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between}
@@ -86,7 +91,7 @@ footer h3{font-size:30px;max-width:340px}footer ul{list-style:none;margin:0;padd
 <header><div class="wrap bar">
 <a class="logo" href="#/">&#10013; A. S. M. Akankali</a>
 <button id="burger" aria-label="Menu">&#9776;</button>
-<nav id="nav"><a href="#/life">His Life</a><a href="#/service">Service</a><a href="#/readings">Readings &amp; Hymns</a><a href="#/gallery">Gallery</a><a class="pill" href="#/tributes">Leave a Tribute</a></nav>
+<nav id="nav"><a href="#/life">His Life</a><a href="#/arrangements">Funeral Arrangements</a><a href="#/service">Service</a><a href="#/readings">Readings &amp; Hymns</a><a href="#/gallery">Gallery</a><a class="pill" href="#/tributes">Leave a Tribute</a></nav>
 </div></header>
 
 <main>
@@ -117,6 +122,20 @@ footer h3{font-size:30px;max-width:340px}footer ul{list-style:none;margin:0;padd
    <li><i>4</i><div><b>Father</b><span>His example inspired his daughter to study pharmacy.</span></div></li>
    <li><i>5</i><div><b>2026</b><span>Called home. He is deeply missed.</span></div></li>
   </ul></div>
+</div></section></div>
+
+<div class="page" data-p="arrangements"><section class="s"><div class="wrap" style="max-width:820px">
+ <div class="eyebrow">Transition to glory</div><h2>Funeral arrangements</h2>
+ <p class="lead">Pharm. Matthew Anyibimbu Sunday Akankali<br>23rd October 1956 &ndash; 11th September 2026 &middot; Aged 69 years</p>
+ <div style="margin-top:30px">
+ <article class="ev"><div class="dt"><small>Fri</small><b>16</b><span>October</span></div><div><div class="ref">Lagos</div><h3>Service of Songs / Wake Keep</h3><p>His Residence, Daily Times Estate, Satellite Town, Lagos</p><p class="tm">4:00 pm &ndash; 5:00 pm</p><a class="mp" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Daily+Times+Estate+Satellite+Town+Lagos">Open in Maps &rarr;</a></div></article>
+ <article class="ev"><div class="dt"><small>Thu</small><b>22</b><span>October</span></div><div><div class="ref">Issele-Uku, Delta State</div><h3>Service of Songs / Wake Keep</h3><p>Akankali family compound, opposite St. Paul&rsquo;s Catholic Cathedral, Issele-Uku, Delta State</p><p class="tm">4:00 pm &ndash; 6:00 pm</p><a class="mp" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=St+Paul%27s+Catholic+Cathedral+Issele-Uku+Delta+State">Open in Maps &rarr;</a></div></article>
+ <article class="ev"><div class="dt"><small>Fri</small><b>23</b><span>October</span></div><div><div class="ref">Issele-Uku, Delta State</div><h3>Brief Stop / Lying in State</h3><p>Akankali family compound, opposite St. Paul&rsquo;s Catholic Cathedral, Issele-Uku, Delta State</p><p class="tm">8:00 am</p><a class="mp" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=St+Paul%27s+Catholic+Cathedral+Issele-Uku+Delta+State">Open in Maps &rarr;</a></div></article>
+ <article class="ev main"><div class="dt"><small>Fri</small><b>23</b><span>October</span></div><div><div class="ref">Issele-Uku, Delta State</div><h3>Funeral Service &amp; Interment</h3><p>Beside Heavy Rain filling station, opposite Ukwu Fruit Restaurant, Ogbe-owelle Qtrs., Issele-Uku, Delta State</p><p class="tm">11:00 am</p><a class="mp" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Heavy+Rain+filling+station+Ogbe-owelle+Issele-Uku+Delta+State">Open in Maps &rarr;</a></div></article>
+ <article class="ev"><div class="dt"><small>Fri</small><b>23</b><span>October</span></div><div><div class="ref">Issele-Uku, Delta State</div><h3>Reception</h3><p>St Paul&rsquo;s Catholic Cathedral, Issele-Uku, Delta State</p><p class="tm">1:30 pm</p><a class="mp" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=St+Paul%27s+Catholic+Cathedral+Issele-Uku+Delta+State">Open in Maps &rarr;</a></div></article>
+ <article class="ev" style="border-bottom:1px solid var(--line)"><div class="dt"><small>Sun</small><b>25</b><span>October</span></div><div><div class="ref">Issele-Uku, Delta State</div><h3>Thanksgiving Service</h3><p>Church of Faith Bible Church, Ishiekepe Village, Issele-Uku</p><p class="tm">10:00 am</p><a class="mp" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Church+of+Faith+Bible+Church+Ishiekepe+Issele-Uku">Open in Maps &rarr;</a></div></article>
+ </div>
+ <div class="kin"><p><b>Survived by:</b> wife, children, grandchild, brothers, sisters, nieces, nephews and relatives.</p><p style="color:var(--mute);margin:0">Signed: Chukwufumnaya Matthew Akankali Jnr. (son), for the family.</p></div>
 </div></section></div>
 
 <div class="page" data-p="service"><section class="s"><div class="wrap grid">
@@ -210,7 +229,7 @@ footer h3{font-size:30px;max-width:340px}footer ul{list-style:none;margin:0;padd
 <div id="lb"><img alt=""></div>
 <footer><div class="wrap">
  <h3>Forever in our hearts.</h3>
- <ul><li><a href="#/life">His Life</a></li><li><a href="#/service">Service</a></li><li><a href="#/readings">Readings &amp; Hymns</a></li><li><a href="#/gallery">Gallery</a></li><li><a href="#/tributes">Tributes</a></li></ul>
+ <ul><li><a href="#/life">His Life</a></li><li><a href="#/arrangements">Funeral Arrangements</a></li><li><a href="#/service">Service</a></li><li><a href="#/readings">Readings &amp; Hymns</a></li><li><a href="#/gallery">Gallery</a></li><li><a href="#/tributes">Tributes</a></li></ul>
  <div class="copy">&copy; 2026 The Akankali family &middot; Pharm. Anyibimbu Sunday Matthew Akankali, 1956&ndash;2026</div>
 </div></footer>
 
